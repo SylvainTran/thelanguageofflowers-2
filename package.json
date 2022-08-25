@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "cd src/main/resources/public/frontend && ng serve",
+    "start": "",
     "build": "cd src/main/resources/public/frontend && ng build",
     "watch": "cd src/main/resources/public/frontend && ng build --watch --configuration development",
-    "test": "ng app/src/main/frontend/test",
-    "heroku-postbuild": "cd src/main/resources/public/frontend && ng build"
+    "test": "ng app/src/main/frontend/test"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +45,6 @@
   },
   "engines": {
     "node": "16.13.0",
-    "npm": "8.9.0"
+    "npm": "8.1.0"
   }
 }
