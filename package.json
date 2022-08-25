@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "cd src/main/resources/public/frontend && ng serve",
+    "build": "cd src/main/resources/public/frontend && ng build",
+    "watch": "cd src/main/resources/public/frontend && ng build --watch --configuration development",
     "test": "ng app/src/main/frontend/test",
-    "heroku-postbuild": "ng build"
+    "heroku-postbuild": "cd src/main/resources/public/frontend && ng build"
   },
   "private": true,
   "dependencies": {
