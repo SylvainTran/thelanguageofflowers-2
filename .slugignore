@@ -2,3 +2,4 @@
 ./.jdk
 /Documentation
 /build
+src/main/resources/public/frontend/.angular/cache/

@@ -59,12 +59,17 @@ todo.rtf
 # Ignore Gradle project-specific cache directory
 .gradle
 
-# Ignore Gradle build output directory
-build
-.angular/cache
-src/main/frontend/.angular/cache
+# IDE configs
 .idea
 .vscode
+
+# Ignore Gradle build output directory
+build
 bin
-/node_modules/
+
+# Angular cache
+.angular/cache
 src/main/resources/public/frontend/.angular/cache/
+
+# NPM
+/node_modules/
