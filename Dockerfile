@@ -17,8 +17,8 @@ VOLUME /tmp
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
 COPY build/libs/thelanguageofflowers-1.0.jar thelanguageofflowers-1.0.jar
-EXPOSE 4200
-EXPOSE 8080
-#ENTRYPOINT exec java $JAVA_OPTS -jar thelanguageofflowers2.jar
+# EXPOSE 4200
+# EXPOSE 8080
+ENTRYPOINT exec java -Dserver.port=$PORT $JAVA_OPTS -jar thelanguageofflowers-1.0.jar
 # For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.
-ENTRYPOINT exec java -Dserver.port=$PORT $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar thelanguageofflowers-1.0.jar
+# ENTRYPOINT exec java -Dserver.port=$PORT $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar thelanguageofflowers-1.0.jar
