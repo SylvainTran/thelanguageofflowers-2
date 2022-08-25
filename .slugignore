@@ -1,5 +1,8 @@
 /node_modules
-./.jdk
+/.jdk
 /Documentation
 /build
+.gradle
+bin
+.angular/cache
 src/main/resources/public/frontend/.angular/cache/
