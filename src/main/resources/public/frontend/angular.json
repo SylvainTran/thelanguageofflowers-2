@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "quest-idler": {
+    "thelanguageofflowers": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../../static/dist/quest-idler",
+            "outputPath": "../../static/dist/thelanguageofflowers",
             "index": "./index.html",
             "main": "./main.ts",
             "polyfills": "./polyfills.ts",
@@ -86,10 +86,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "quest-idler:build:production"
+              "browserTarget": "thelanguageofflowers:build:production"
             },
             "development": {
-              "browserTarget": "quest-idler:build:development"
+              "browserTarget": "thelanguageofflowers:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -97,7 +97,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "quest-idler:build"
+            "browserTarget": "thelanguageofflowers:build"
           }
         },
         "test": {
