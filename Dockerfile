@@ -21,7 +21,7 @@ RUN mkdir -p /build/libs && mkdir -p /app
 #Cpy spring boot jar
 COPY --from=build-gradle-step /home/gradle/src/build/libs/thelanguageofflowers-1.0.jar /app/build/libs/thelanguageofflowers-1.0.jar
 #Cpy the data folder from current context
-COPY ./data /
+COPY data /app
 #Cpy angular resources?
 COPY --from=build-angular-step /app/src/main/resources/ /
 WORKDIR /app
