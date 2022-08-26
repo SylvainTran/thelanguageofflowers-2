@@ -6,20 +6,28 @@ RUN npm install
 COPY . /app
 RUN npm run build --prod
 
-FROM nginx:1.17.1-alpine
-COPY --from=build-step /app/src/main/resources/static/dist/thelanguageofflowers /usr/share/nginx/thelanguageofflowers
-
 FROM gradle:7.5.1-jdk11 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
+#The path looks like this now: /home/gradle/src a.k.a our current . (thelanguageofflowers-2)
 WORKDIR /home/gradle/src
+COPY --from=build-step /app/src/main/resources/static/dist/thelanguageofflowers /home/gradle/src/src/main/resources/static/dist/thelanguageofflowers
 RUN gradle build --no-daemon 
 
 FROM eclipse-temurin:11.0.16.1_1-jdk
+# Not sure this is needed:
+EXPOSE 8080
+
+# Do we want to go on /tmp?
 VOLUME /tmp
+
+# Not sure this is fed correctly - using manual parameters to test
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
-COPY --from=build /home/gradle/src/build/libs/thelanguageofflowers-1.0.jar thelanguageofflowers-1.0.jar 
+ENV M_PORT=$PORT
+COPY --from=build /home/gradle/src/build/libs/thelanguageofflowers-1.0.jar /app/thelanguageofflowers-1.0.jar 
+
+# For pre-built images:
 # COPY build/libs/thelanguageofflowers-1.0.jar thelanguageofflowers-1.0.jar
-ENTRYPOINT exec java -Dserver.port=$PORT $JAVA_OPTS -jar thelanguageofflowers-1.0.jar
-# For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.
-# ENTRYPOINT exec java -Dserver.port=$PORT $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar thelanguageofflowers-1.0.jar
+
+# ENTRYPOINT ["java", "-Dserver.port=$PORT", -jar thelanguageofflowers-1.0.jar"]
+ENTRYPOINT java -Dserver.port=$M_PORT -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Djava.security.egd=file:/dev/./urandom -jar /app/thelanguageofflowers-1.0.jar
