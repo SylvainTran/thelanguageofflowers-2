@@ -23,11 +23,10 @@ VOLUME /tmp
 # Not sure this is fed correctly - using manual parameters to test
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
-ENV M_PORT=$PORT
 COPY --from=build /home/gradle/src/build/libs/thelanguageofflowers-1.0.jar /app/thelanguageofflowers-1.0.jar 
 
 # For pre-built images:
 # COPY build/libs/thelanguageofflowers-1.0.jar thelanguageofflowers-1.0.jar
 
 # ENTRYPOINT ["java", "-Dserver.port=$PORT", -jar thelanguageofflowers-1.0.jar"]
-ENTRYPOINT java -Dserver.port=$M_PORT -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Djava.security.egd=file:/dev/./urandom -jar /app/thelanguageofflowers-1.0.jar
+CMD ["sh", "-c", "java -Dserver.port=$PORT -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -XX:+UseContainerSupport -Djava.security.egd=file:/dev/./urandom -jar /app/thelanguageofflowers-1.0.jar"]
