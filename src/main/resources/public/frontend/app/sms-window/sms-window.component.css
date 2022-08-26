@@ -2,25 +2,16 @@
     position: fixed;
     right: 0;
     bottom: 12vh; 
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: flex-end;
-    align-items: left;
-
     color: white;
     z-index: 2;
-    
     gap: 4rem;
     width: 100vw;
-
-    /* padding-left: 1.2rem; */
-
-    overflow: scroll;
     font-family: 'Cantarell', 'sans-serif';
-
     pointer-events: none;
 }
 
