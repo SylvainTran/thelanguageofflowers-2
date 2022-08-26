@@ -73,3 +73,6 @@ src/main/resources/public/frontend/.angular/cache/
 
 # NPM
 /node_modules/
+
+# Static/dist (we're building and serving dist remotely on Docker now)
+/**/static
