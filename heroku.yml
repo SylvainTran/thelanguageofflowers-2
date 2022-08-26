@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: java -Dserver.port=$PORT -jar /build/libs/thelanguageofflowers-1.0.jar
+  web: java -Dserver.port=$PORT -jar /app/build/libs/thelanguageofflowers-1.0.jar
