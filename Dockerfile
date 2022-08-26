@@ -12,6 +12,8 @@ COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 COPY --from=build-angular-step /app/src/main/resources/static/dist/thelanguageofflowers /home/gradle/src/src/main/resources/static/dist/thelanguageofflowers
 RUN gradle wrapper && ./gradlew build --no-daemon
+WORKDIR /home/gradle/src/src/main/resources/static/dist/thelanguageofflowers
+RUN LS
 
 FROM eclipse-temurin:11.0.16.1_1-jdk AS build-jar-step
 VOLUME /tmp
@@ -24,4 +26,5 @@ COPY --from=build-gradle-step /home/gradle/src/build/libs/thelanguageofflowers-1
 COPY ./data /
 #Cpy angular resources?
 COPY --from=build-angular-step /app/src/main/resources/ /
-ENTRYPOINT ["sh", "-c", "java", "-Dserver.port=$PORT", "-Dfile.encoding=UTF-8 -XX:+UseContainerSupport -Djava.security.egd=file:/dev/./urandom", "-jar", "/build/libs/thelanguageofflowers-1.0.jar"]
+RUN ls
+ENTRYPOINT ["java", "-Dserver.port=$PORT", "-Dfile.encoding=UTF-8 -XX:+UseContainerSupport -Djava.security.egd=file:/dev/./urandom", "-jar", "/build/libs/thelanguageofflowers-1.0.jar"]
