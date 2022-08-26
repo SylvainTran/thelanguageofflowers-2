@@ -24,6 +24,8 @@ COPY --from=build-gradle-step /home/gradle/src/build/libs/thelanguageofflowers-1
 RUN cd /app && ls
 
 FROM alpine:latest  
+RUN mkdir -p /app
+WORKDIR /app
 COPY --from=build-jar-step /app/thelanguageofflowers-1.0.jar /app
 RUN cd /app && ls
 RUN adduser -D myuser
