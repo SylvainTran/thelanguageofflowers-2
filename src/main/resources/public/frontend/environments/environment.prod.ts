@@ -4,5 +4,5 @@ export const environment = {
     minPlayerOptions: 2,
     maxPlayerOptions: 2  
   },
-  apiUrl: "https://thelanguageofflowers-2-a.herokuapp.com/"
+  apiUrl: "https://thelanguageofflowers-2-a.herokuapp.com"
 };
