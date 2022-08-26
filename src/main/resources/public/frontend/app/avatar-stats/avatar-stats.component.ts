@@ -30,7 +30,6 @@ export class AvatarStatsComponent implements OnInit, OnDestroy {
   }
 
   public calculateAvatarLevelStats() {
-    console.log("Calculating avatar level stats!");
     this.statistics = this.avatarStatisticsService.incrementStats();
   }
 }

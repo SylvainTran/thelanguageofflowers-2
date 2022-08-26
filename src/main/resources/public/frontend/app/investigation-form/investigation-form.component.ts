@@ -71,7 +71,6 @@ export class InvestigationFormComponent implements OnInit, AfterViewInit {
   }
 
   public onSubmit() {
-    console.log(this.formModel.value);    
     this.submitForm("/formRequest")?.subscribe({
       next: (data: any) => {
         if (data !== null && data.response !== null && data.response !== "") {
@@ -104,7 +103,6 @@ export class InvestigationFormComponent implements OnInit, AfterViewInit {
     const path: string = this.apiUrl + routeName;
 
     let keywordStrArray: string[] = [];
-    console.log("OBJECT: " + JSON.stringify(this.keywords.value));
 
     for(let i = 0; i < this.keywords.length; i++) {
       let val = this.keywords.value[i];
@@ -131,7 +129,6 @@ export class InvestigationFormComponent implements OnInit, AfterViewInit {
   }
 
   public changeRequestType(event: any) {
-    console.log(event.target.value);
     this.requestType = event.target.value;
   }
 }

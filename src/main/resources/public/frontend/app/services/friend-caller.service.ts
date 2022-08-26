@@ -22,7 +22,6 @@ export class RequestInteraction {
               requester: Character, 
               target: Character) {
     
-    console.log("Target: " + target.name + ", " + target.isBusy);
     this.requester = requester;
     this.target = target;
   }
@@ -34,20 +33,15 @@ export class RequestInteraction {
   setIsBusy(busy: boolean) {
     this.requester.isBusy = busy;
     this.target.isBusy = busy;
-
-    console.log(this.requester.isBusy);
-    console.log(this.target.isBusy);
   }
 
   initiateRequest() {
     this.ready = this.checkCharactersAreBusy();
-    console.log("This.ready: " + this.ready);
 
     if (this.ready) {
       // proceed
       this.setIsBusy(true);
       this.ready = false;
-      console.log("This.ready now: " + this.ready);
       this.friendCallerService.startInteraction(this);
 
     } else {
@@ -116,8 +110,6 @@ export class ConversationSession {
   pullConversationDataNodes() {
     // pull from client side .tsv
     this.conversations = this.friendCallerService.getInteractionFriendshipConversationTexts(this.requestInteraction.requester, this.requestInteraction.target, this.friendshipLevel);
-    console.log("this conversations: " + this.conversations.length);
-    console.log(this.conversations);
 
     if(this.conversations.length === 0 || this.conversations === null || this.conversations === undefined) {
       console.log("No conversations found - ending conversation session.");
@@ -160,7 +152,6 @@ export class ConversationSession {
             .replace('A:', requestedConversation.characterA + ":")
             .replace('B:', requestedConversation.characterB.name + ":")
             .trimEnd();
-      console.log("TEXT: " + text);
       ++this.conversationEndIndex; // this refers to count of replies in this conv
       return text;
     });

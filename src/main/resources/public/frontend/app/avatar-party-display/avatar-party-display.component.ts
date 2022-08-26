@@ -158,8 +158,6 @@ class PromptReplyBuilder implements PromptBuilder {
 
       const locations = this.director.activePartyQuest?.getLocations();
 
-      console.log(locations);
-
       if (locations && this.promptIterator < locations.length) {
         this.director.activeLocation = locations[this.promptIterator];
         this.director.locationBgEl.style.backgroundImage = "url(" + this.director.assetPathPrefix + this.director.activeLocation + ")";
@@ -531,7 +529,6 @@ export class AvatarPartyDisplayComponent implements OnInit, OnChanges  {
             this.activeMonster = this.activePartyQuestMonsters[this.monsterIterator];
             const finisher = Math.random() * 100 > 50? this.ActivePartyNames![0].name : this.ActivePartyNames![1].name;
             this.bardText = finisher + " dealt the vanquishing blow!";
-            console.log("The monster was defeated");
           }
           // We may have just killed the last monster
           prompt?.validateQuestState(QuestStates.SUCCESS);

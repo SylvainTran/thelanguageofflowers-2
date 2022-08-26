@@ -35,13 +35,11 @@ export class AvatarStatisticsService {
   }
   
   public incrementStat(stat: String) {
-    console.log("incrementing stat: " + stat);
     let oldValue: number | any = this.statistics.get(stat);
     this.statistics.set(stat, oldValue + Math.ceil(Math.random() * 3));
   }
 
   public incrementStats() {
-    console.log("Incrementing stats");
     let buffer : String[] = [];
     this.selectStats(buffer); 
     buffer.forEach(stat => this.incrementStat(stat));

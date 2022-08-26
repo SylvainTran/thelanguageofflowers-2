@@ -39,7 +39,6 @@ export class AvatarControllerService {
 
   // TOOD: special click combos / rhythm patterns
   public handleAvatarClicked() {
-    console.log("Avatar clicked");
     if (this.isAlive()) {
       ++this.clickCount;
       this.avatarExperienceService.handleLevel(this.clickCount);  
