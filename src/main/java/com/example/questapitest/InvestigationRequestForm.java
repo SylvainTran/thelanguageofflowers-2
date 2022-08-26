@@ -1,12 +1,10 @@
 package com.example.questapitest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -34,14 +32,8 @@ public class InvestigationRequestForm {
     public String getData() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            String dataPathPrefix = "./data/";
-            Path of = Path.of(dataPathPrefix + "InvestigationFormsData.json");
-
-            JsonNode jsonNode = mapper.readTree(of.toFile());
-            jsonNode.forEach(node -> System.out.println((node)));
-
-            //ArrayList<ValidFormRequest> listRequests = mapper.readValue(of.toFile(), new TypeReference<ArrayList<ValidFormRequest>>(){});
-            Map<String, ValidFormRequest[]> listRequests = mapper.readValue(of.toFile(), new TypeReference<Map<String, ValidFormRequest[]>>(){});        	
+            InputStream is = getClass().getResourceAsStream("/json/InvestigationFormsData.json");
+            Map<String, ValidFormRequest[]> listRequests = mapper.readValue(is, new TypeReference<Map<String, ValidFormRequest[]>>(){});
             ValidFormRequest[] arr = listRequests.get(validFormRequest.getRequestType());
 
             for (int i = 0; i < arr.length; i++) {
@@ -58,7 +50,17 @@ public class InvestigationRequestForm {
             String jsonResponse = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseObject);
             System.out.println(jsonResponse);
             return jsonResponse;
-        } catch (Exception ex) {
+        }
+        catch( com.fasterxml.jackson.core.JsonProcessingException e) {
+            System.err.println(e.getMessage());
+        }
+        catch (java.io.IOException e) {
+            System.err.println(e.getMessage());
+        }
+        catch (NullPointerException e) {
+            System.err.println(e.getMessage());
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
         return null;

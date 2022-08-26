@@ -2,8 +2,7 @@ package com.example.questapitest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -43,17 +42,25 @@ public class KillMonsterQuest extends Quest {
     public String getData() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            String dataPathPrefix = "./data/";
-            Path of = Path.of(dataPathPrefix + "MockQuests.json");
+            // Get file from resources folder
+            InputStream is = getClass().getResourceAsStream("/json/MockQuests.json");
+            subquestsList = Arrays.asList(mapper.readValue(is, Quest[].class));
 
-            subquestsList = Arrays.asList(mapper.readValue(of.toFile(), Quest[].class));
-
-            Quest[] arr = new Quest[subquestsList.size()]; 
+            Quest[] arr = new Quest[subquestsList.size()];
             subquestsList.toArray(arr);
             String questsData = new ObjectMapper().writeValueAsString(arr);
             return questsData;
-
-        } catch (Exception ex) {
+        }
+        catch( com.fasterxml.jackson.core.JsonProcessingException e) {
+            System.err.println(e.getMessage());
+        }
+        catch (java.io.IOException e) {
+            System.err.println(e.getMessage());
+        }
+        catch (NullPointerException e) {
+            System.err.println(e.getMessage());
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
         return null;
