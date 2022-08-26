@@ -406,11 +406,14 @@ export class AvatarPartyDisplayComponent implements OnInit, OnChanges  {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['promptList'].currentValue !== changes['promptList'].previousValue) {
+    if (changes['promptList'] && changes['promptList'].currentValue !== changes['promptList'].previousValue) {
       this.reinitPromptData(changes['promptList'].currentValue);
       this.maxPrompts = changes['promptList'].currentValue.length;
     }
-    if (changes['activePartyQuest'].currentValue !== changes['activePartyQuest'].previousValue) {
+    if (changes['promptList'] === undefined) {
+      return;
+    }
+    if (changes['activePartyQuest'] && changes['activePartyQuest'].currentValue !== changes['activePartyQuest'].previousValue) {
       this.reinitActivePartyQuestData(changes['activePartyQuest'].currentValue);
       const data = this.activePartyQuest?.getQuestData().monsters;
       
