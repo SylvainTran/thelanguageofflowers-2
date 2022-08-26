@@ -34,7 +34,7 @@ public class InvestigationRequestForm {
     public String getData() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            String dataPathPrefix = "/app/data/";
+            String dataPathPrefix = "./data/";
             Path of = Path.of(dataPathPrefix + "InvestigationFormsData.json");
 
             JsonNode jsonNode = mapper.readTree(of.toFile());
