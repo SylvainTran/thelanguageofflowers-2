@@ -24,6 +24,4 @@ RUN mkdir -p /build/libs
 COPY --from=build-gradle-step /home/gradle/src/build/libs/thelanguageofflowers-1.0.jar /build/libs/thelanguageofflowers-1.0.jar 
 RUN cd /build/libs && ls
 WORKDIR /build/libs
-RUN adduser -D myuser
-USER myuser
 CMD ["sh", "-c", "./java -Dserver.port=$PORT -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -XX:+UseContainerSupport -Djava.security.egd=file:/dev/./urandom -jar /build/libs/thelanguageofflowers-1.0.jar"]
