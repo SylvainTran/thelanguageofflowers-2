@@ -56,10 +56,6 @@
     padding-top: 2rem;
 }
 
-.main-unit {
-    overflow: scroll;
-}
-
 #app-list {
     background-image: url('../assets/pexels-pixabay-33109.jpg');
     background-size: cover;
