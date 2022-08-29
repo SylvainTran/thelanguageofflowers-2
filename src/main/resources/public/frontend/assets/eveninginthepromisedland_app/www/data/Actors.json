@@ -1,0 +1,8 @@
+[
+null,
+{"id":1,"battlerName":"g1_b","characterIndex":0,"characterName":"g1","classId":1,"equips":[1,1,2,3,0],"faceIndex":0,"faceName":"g1","traits":[],"initialLevel":1,"maxLevel":99,"name":"Autumn","nickname":"","note":"","profile":""},
+{"id":2,"battlerName":"g4_b","characterIndex":0,"characterName":"g4","classId":2,"equips":[2,1,2,3,0],"faceIndex":0,"faceName":"g4","traits":[],"initialLevel":1,"maxLevel":99,"name":"TryAgain34","nickname":"","note":"","profile":""},
+{"id":3,"battlerName":"g2_b","characterIndex":0,"characterName":"g2","classId":3,"equips":[3,0,2,3,4],"faceIndex":0,"faceName":"g2","traits":[],"initialLevel":1,"maxLevel":99,"name":"herohero","nickname":"","note":"","profile":""},
+{"id":4,"battlerName":"g3_b","characterIndex":0,"characterName":"g3","classId":4,"equips":[4,0,2,3,4],"faceIndex":0,"faceName":"g3","traits":[],"initialLevel":1,"maxLevel":99,"name":"SylvainTran","nickname":"","note":"","profile":""},
+{"id":5,"battlerName":"","characterIndex":6,"characterName":"People2","classId":3,"equips":[0,0,0,0,0],"faceIndex":6,"faceName":"People2","traits":[],"initialLevel":1,"maxLevel":99,"name":"Pion","nickname":"","note":"","profile":""}
+]
